@@ -11,7 +11,6 @@ request.onsuccess = function(event) {
   db = event.target.result;
 
   if (navigator.onLine) {
-    console.log("Start uploading offline transactions.");
     uploadBudgetTraqnsaction();
   }
 };
@@ -38,9 +37,9 @@ function uploadBudgetTraqnsaction() {
   getAll.onsuccess = function() {
     // if there was data in indexedDb's store, let's send it to the api server
     if (getAll.result.length > 0) {
-      fetch("/api/transaction", {
+      fetch("/api/transaction/bulk", {
         method: "POST",
-        body: JSON.stringify(transaction),
+        body: JSON.stringify(getAll.result),
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json"
@@ -48,6 +47,7 @@ function uploadBudgetTraqnsaction() {
       })
         .then(response => response.json())
         .then(serverResponse => {
+
           if (serverResponse.message) {
             throw new Error(serverResponse);
           }
