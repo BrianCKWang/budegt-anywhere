@@ -7,6 +7,7 @@ To incorporate offline functionality and PWA capability for a quick and easy to 
   - Mongoose,
   - MongoDB,
   - and MongoDB Atlas
+
 Deployed on Heroku.
 
 ![main pic](https://github.com/BrianCKWang/budegt-anywhere/blob/main/public/img/main-01.png)
