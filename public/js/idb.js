@@ -11,6 +11,7 @@ request.onsuccess = function(event) {
   db = event.target.result;
 
   if (navigator.onLine) {
+    console.log("Start uploading offline transactions.");
     uploadBudgetTraqnsaction();
   }
 };
